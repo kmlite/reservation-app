@@ -1,5 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const bodyParser = require('body-parser')
 
 const config = require('./config')
 const FakeDb = require('./fake-db')
@@ -7,6 +8,7 @@ const FakeDb = require('./fake-db')
 const path = require('path')
 
 const productRoutes = require('./routes/products')
+const userRoutes = require('./routes/users')
 
 mongoose.connect(config.DB_URI).then(
 	() => {
@@ -20,7 +22,10 @@ mongoose.connect(config.DB_URI).then(
 
 const app = express()  
 
+app.use(bodyParser.json())
 app.use('/api/v1/products', productRoutes)
+app.use('/api/v1/users', userRoutes)
+
 if(process.env.NODE_ENV === 'production') {
 	const appPath = path.join( __dirname, '..', 'dist', 'reservation-app')
 	app.use(express.static(appPath))

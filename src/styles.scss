@@ -16,7 +16,7 @@
 //   /* Carousel base class */
 //   .carousel {
 //     margin-bottom: 4rem;
-//   }
+//   }  
 //   /* Since positioning the image, we need to help out the caption */
 //   .carousel-caption {
 //     bottom: 3rem;
@@ -90,3 +90,8 @@
 //       margin-top: 7rem;
 //     }
 //   }
+
+.input-group-text {
+  border: initial;
+  background-color: initial;
+}
