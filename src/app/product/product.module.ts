@@ -5,13 +5,14 @@ import { ProductComponent } from './product.component';
 import { ProductListingsComponent } from './product-listings/product-listings.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductService } from './shared/product.service';
+import { AuthGuard } from '../auth/shared/auth.guard';
 
 const routes: Routes = [
   {
     path: 'products',component: ProductComponent,
     children: [
       { path: '',component: ProductListingsComponent },
-      { path: ':productId',component: ProductDetailComponent }
+      { path: ':productId',component: ProductDetailComponent, canActivate: [AuthGuard] }
     ] 
   },
 ];
